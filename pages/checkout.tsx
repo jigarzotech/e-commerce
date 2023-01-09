@@ -16,9 +16,7 @@ function Checkout() {
     };
     return (
         <Box className='checkout'>
-            {/* <Box className='checkoutLoginBtn'>
 
-            </Box> */}
             <Box className='checkoutDetails' sx={{ flexDirection: matches ? 'column' : 'row' }}>
 
                 <form className='biilDetails' style={{ width: matches ? '90%' : '50%' }} onSubmit={handleSubmit(onSubmit)}>

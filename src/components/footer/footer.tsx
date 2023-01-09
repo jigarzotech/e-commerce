@@ -5,6 +5,7 @@ import InstagramIcon from '@mui/icons-material/Instagram';
 import TwitterIcon from '@mui/icons-material/Twitter';
 import PinterestIcon from '@mui/icons-material/Pinterest';
 import PartnersLogo from '../partnersLogo/partnersLogo';
+import Link from 'next/link';
 
 function Footer() {
     let year: number = new Date().getFullYear()
@@ -39,8 +40,10 @@ function Footer() {
                         <Grid item xs={12} sm={6} md={3} className='gridItem' >
                             <Typography variant='h5' mt={5}>My Account</Typography>
                             <Typography variant='subtitle1' mt={2}> My Account</Typography>
-                            <Typography variant='subtitle1'>Contact</Typography>
-                            <Typography variant='subtitle1'>Shopping Cart</Typography>
+                            <Typography variant='subtitle1'>
+                                <Link href='/contact'>Contact</Link></Typography>
+                            <Typography variant='subtitle1'>
+                                <Link href='/shoppingcart'>Shopping Cart</Link></Typography>
                             <Typography variant='subtitle1'>Shop</Typography>
                         </Grid>
                         <Grid item xs={12} sm={6} md={3} className='gridItem' >

@@ -5,13 +5,11 @@ import { itemCategory, itemData } from './menBannerData';
 import MenBannerSlider from './menBannerSlider';
 import { useTheme } from "@mui/material/styles";
 
-interface props {
-    filterData: {
-        img: string;
-        category: string;
-        title: string;
-        price: string
-    }
+type filterDataType = {
+    img: string;
+    category: string;
+    title: string;
+    price: string
 }
 function MenBanner() {
 
@@ -19,7 +17,7 @@ function MenBanner() {
     const matches = useMediaQuery(theme.breakpoints.down('md'));
 
     const [activeCategory, setActiveCategory] = useState<string>('')
-    const [filterData, setFilterData] = useState<Array>([])
+    const [filterData, setFilterData] = useState<filterDataType[] | []>([])
     const filterDataHandler = (name: string) => {
         if (activeCategory) {
             const newData = itemData.filter((item) => item?.category === name)
@@ -36,8 +34,7 @@ function MenBanner() {
         filterDataHandler()
     }, [])
     return (
-        <Box className='menBanner'
-            sx={{ flexDirection: matches && 'column' }}>
+        <Box className='menBanner' sx={{ flexDirection: matches ? 'column' : 'row' }}>
 
             <Box className='menBannerSlider'
                 sx={{ width: matches ? '100%' : '75%' }}>
@@ -58,7 +55,7 @@ function MenBanner() {
                 </Box >
             </Box >
             <Box className='ImageContainer'
-                sx={{ width: matches ? '90%' : '25%', marginLeft: !matches && '20px', margin: matches && 'auto' }} >
+                sx={{ width: matches ? '90%' : '25%', margin: matches && 'auto', marginLeft: !matches && '20px' }} >
                 <Typography variant='h2'>Men's</Typography>
                 <Typography variant='subtitle1' className='subtitle'>Discover More</Typography>
             </Box>

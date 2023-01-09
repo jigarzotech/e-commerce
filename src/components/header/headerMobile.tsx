@@ -6,6 +6,7 @@ import MenuIcon from "@mui/icons-material/Menu";
 import Link from 'next/link';
 import Badge from '@mui/material/Badge';
 import { Colors } from '../theme/theme';
+import ExpandMoreIcon from '@mui/icons-material/ExpandMore';
 
 export const HeaderMobile: React.FC = () => {
     return (
@@ -60,23 +61,45 @@ export const HeaderMobile: React.FC = () => {
 
                     <AccordionDetails>
                         <List className='headerList'>
-                            <Link href=''>
-                                <ListItemText primary='Home' className='headerListItem'  />
+                            <Link href='/'>
+                                <ListItemText primary='Home' className='headerListItem' />
                             </Link>
                             <Link href=''>
                                 <ListItemText primary='Shop' className='headerListItem' />
                             </Link>
                             <Link href=''>
-                                <ListItemText primary='Promotion' className='headerListItem' />
-                            </Link>
-                            <Link href=''>
-                                <ListItemText primary='Pages' className='headerListItem' />
+                                <ListItemText primary='Collaction' className='headerListItem' />
                             </Link>
                             <Link href=''>
                                 <ListItemText primary='Blog' className='headerListItem' />
                             </Link>
-                            <Link href=''>
+                            <Link href='/contact'>
                                 <ListItemText primary='Contact' className='headerListItem' />
+                            </Link>
+                            <Link href='' >
+                                <Accordion sx={{
+                                    color: 'white', boxShadow: 'none',
+                                    background: 'border-box', alignItems: 'center',
+                                    marginTop: '-10px'
+                                }}>
+                                    <AccordionSummary expandIcon={<ExpandMoreIcon />}
+                                        aria-controls="panel1a-content"
+                                        id="panel1a-header"
+                                    >
+                                        <ListItemText primary='Pages' className='headerListItem pages' />
+                                    </AccordionSummary>
+                                    <AccordionDetails sx={{ marginTop: '-10px' }}>
+                                        <Link href='/shoppingcart'>
+                                            <ListItemText primary='Shopping Cart' className='headerListItem' />
+                                        </Link>
+                                        <Link href='/checkout'>
+                                            <ListItemText primary='Check Out' className='headerListItem' />
+                                        </Link>
+                                        <Link href='/faqs'>
+                                            <ListItemText primary='FAQs' className='headerListItem' />
+                                        </Link>
+                                    </AccordionDetails>
+                                </Accordion>
                             </Link>
                         </List>
                     </AccordionDetails>

@@ -8,8 +8,10 @@ import { Colors } from '../theme/theme';
 import Menu from '@mui/material/Menu';
 import MenuItem from '@mui/material/MenuItem';
 import { useState } from 'react';
+import { useRouter } from 'next/router';
 
 export const HeaderDesktop: React.FC = () => {
+    const router = useRouter()
     const [anchorEl, setAnchorEl] = useState<null | HTMLElement>(null);
     const open = Boolean(anchorEl);
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
@@ -18,6 +20,7 @@ export const HeaderDesktop: React.FC = () => {
     const handleClose = () => {
         setAnchorEl(null);
     };
+
     return (
         <Box className='headerDesktop'>
             <Box className='headerTitle'>
@@ -25,8 +28,9 @@ export const HeaderDesktop: React.FC = () => {
             </Box>
             <List className='headerList'>
                 <Link href='/'>
-                    <ListItemText className='headerListItem' primary='Home' /></Link>
-                <Link href='/about'>
+                    <ListItemText className='headerListItem' primary='Home'
+                        sx={{ background: router.pathname === '/' && Colors.info }} /></Link>
+                <Link href='/'>
                     <ListItemText className='headerListItem' primary='Shop' />
                 </Link>
                 <Link href=''>
@@ -35,8 +39,9 @@ export const HeaderDesktop: React.FC = () => {
                 <Link href=''>
                     <ListItemText className='headerListItem' primary='Blog' />
                 </Link>
-                <Link href=''>
-                    <ListItemText className='headerListItem' primary='Contact' />
+                <Link href='/contact'>
+                    <ListItemText className='headerListItem' primary='Contact'
+                        sx={{ background: router.pathname === '/contact' && Colors.info }} />
                 </Link>
                 <Link href=''>
                     <Button
@@ -46,7 +51,8 @@ export const HeaderDesktop: React.FC = () => {
                         aria-expanded={open ? 'true' : undefined}
                         onClick={handleClick}
                     >
-                        <ListItemText className='headerListItem' primary='Pages' />
+                        <ListItemText className='headerListItem' primary='Pages'
+                            sx={{ background: router.pathname === '/shoppingcart' || router.pathname === '/checkout' || router.pathname === '/faqs' && Colors.info, color: 'white' }} />
                     </Button>
                     <Menu
                         className='Menu'
@@ -62,6 +68,7 @@ export const HeaderDesktop: React.FC = () => {
                             Shopping Cart
                         </Link></MenuItem>
                         <MenuItem onClick={handleClose}><Link href='/checkout'> Check Out </Link></MenuItem>
+                        <MenuItem onClick={handleClose}><Link href='/faqs'>FAQs</Link></MenuItem>
 
                     </Menu>
                 </Link>
@@ -78,7 +85,7 @@ export const HeaderDesktop: React.FC = () => {
                     <ListItemIcon className='headerListIcon'>
 
                         <Badge badgeContent={2} color="primary">
-                            <ShoppingCartIcon color="white" />
+                            <ShoppingCartIcon sx={{ color: "white" }} />
                         </Badge>
                     </ListItemIcon>
                 </ListItemButton>
@@ -86,26 +93,3 @@ export const HeaderDesktop: React.FC = () => {
         </Box >
     );
 };
-//   <Button
-//                             id="basic-button"
-//                             aria-controls={open ? 'basic-menu' : undefined}
-//                             aria-haspopup="true"
-//                             aria-expanded={open ? 'true' : undefined}
-//                             onClick={handleClick}
-//                         >
-//                             <Link href={item.link} key={index}>
-//                                 <ListItemText className='headerListItem' primary={item.name} /></Link>
-
-//                         </Button>
-//                         <Menu
-//                             id="basic-menu"
-//                             anchorEl={anchorEl}
-//                             open={open}
-//                             onClose={handleClose}
-//                             MenuListProps={{
-//                                 'aria-labelledby': 'basic-button',
-//                             }}
-//                         >
-//                             <MenuItem onClick={handleClose}>{item.menu.menuitem}</MenuItem>
-
-//                         </Menu>

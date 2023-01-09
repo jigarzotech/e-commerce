@@ -14,7 +14,8 @@ import '../styles/partnersLogo.scss'
 import '../styles/footer.scss'
 import '../styles/shoppingcart.scss'
 import '../styles/checkout.scss'
-
+import '../styles/contact.scss'
+import '../styles/faqs.scss'
 export default function App({ Component, pageProps }: AppProps) {
   return (
     <MainLayout>

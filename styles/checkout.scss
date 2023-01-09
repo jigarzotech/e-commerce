@@ -4,33 +4,6 @@
     flex-direction: column;
     background-color: white;
 
-    // .checkoutLoginBtn {
-    //     display: flex;
-    //     width: 90%;
-    //     margin: auto;
-    //     margin-top: 50px;
-    //     justify-content: space-evenly;
-
-    //     .Btns {
-    //         width: 45%;
-    //         padding: 10px;
-    //         background-color: #f3f3f3;
-    //         border: 2px solid #ebebeb;
-    //         text-align: center;
-    //         cursor: pointer;
-    //     }
-
-    //     .input {
-    //         outline: none;
-    //         cursor: text;
-
-    //         &::placeholder {
-    //             text-align: center;
-    //             font-size: 16px;
-    //         }
-    //     }
-    // }
-
     .checkoutDetails {
         display: flex;
         margin: auto;
@@ -110,7 +83,7 @@
                 .paymentBtn {
                     background-color: black;
                     color: white;
-                    width: 40%;
+                    width: 50%;
                     display: flex;
                     margin: 10px auto;
                     padding: 10px;
