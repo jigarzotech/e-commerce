@@ -40,7 +40,7 @@ export const HeaderDesktop: React.FC = () => {
           COLOSHOP
         </Typography>
       </Box>
-      <List className="headerList">
+      {/* <List className="headerList">
         <Link href="/">
           <ListItemText
             className="headerListItem"
@@ -106,7 +106,7 @@ export const HeaderDesktop: React.FC = () => {
             </MenuItem>
           </Menu>
         </Link>
-      </List>
+      </List> */}
       <List className="headerListAction">
         <ListItemButton className="headerListActionBtn">
           <ListItemIcon className="headerListIcon">

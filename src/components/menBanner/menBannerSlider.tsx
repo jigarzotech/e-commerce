@@ -13,6 +13,7 @@ import FavoriteBorderIcon from "@mui/icons-material/FavoriteBorder";
 import { useTheme } from "@mui/material/styles";
 import { useDispatch, useSelector } from "react-redux";
 import { addToCart } from "../../redux/cart/cartReducer";
+
 interface props {
   filterData: {
     img: string;

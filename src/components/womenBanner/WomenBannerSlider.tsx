@@ -104,7 +104,7 @@ const WomenBannerSlider: React.FC<props> = ({ filterData }) => {
                   {/* <AddIcon /> */}
                   <Typography variant="subtitle1">+ Quick View</Typography>
                 </Box>
-                <Box className="random">
+                <Box className="random" >
                   <ShuffleIcon />
                 </Box>
               </Box>

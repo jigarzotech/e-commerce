@@ -58,55 +58,71 @@ export default function Shoppingcart() {
             </TableRow>
           </TableHead>
           <TableBody>
-            {cartItems.carts?.map((item, index) => (
-              <TableRow
-                sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
-                key={index}
-              >
-                <TableCell component="th" scope="row" className="tableRowImage">
-                  <Image
-                    src={item.img}
-                    alt="cartimage"
-                    width={150}
-                    height={150}
-                  />
-                </TableCell>
-                <TableCell className="tableRowName">{item.title}</TableCell>
-                <TableCell className="tableRowPrice">${item.price}</TableCell>
-                <TableCell className="tableRowQnt">
-                  {/*  */}
+            {cartItems.carts?.map(
+              (
+                item: {
+                  id: number;
+                  img: string;
+                  category: string;
+                  title: string;
+                  price: number;
+                  cardQuantity: number;
+                },
+                index: number
+              ) => (
+                <TableRow
+                  sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
+                  key={index}
+                >
+                  <TableCell
+                    component="th"
+                    scope="row"
+                    className="tableRowImage"
+                  >
+                    <Image
+                      src={item.img}
+                      alt="cartimage"
+                      width={150}
+                      height={150}
+                    />
+                  </TableCell>
+                  <TableCell className="tableRowName">{item.title}</TableCell>
+                  <TableCell className="tableRowPrice">${item.price}</TableCell>
+                  <TableCell className="tableRowQnt">
+                    {/*  */}
 
-                  <Box display="flex" justifyContent={"center"}>
-                    <IconButton
-                      className="iconButton"
-                      onClick={() => dispatch(decreaseQuantity(item))}
-                    >
-                      <RemoveIcon />
-                    </IconButton>
-                    <Typography variant="h6" className="quantity">
-                      {item.cardQuantity}
-                    </Typography>
-                    <IconButton
-                      className="iconButton"
-                      onClick={() => {
-                        console.log(item);
-                        dispatch(addToCart(item));
-                      }}
-                    >
-                      <AddIcon />
-                    </IconButton>
-                  </Box>
+                    <Box display="flex" justifyContent={"center"}>
+                      <IconButton
+                        className="iconButton"
+                        onClick={() => dispatch(decreaseQuantity(item))}
+                      >
+                        <RemoveIcon />
+                      </IconButton>
+                      <Typography variant="h6" className="quantity">
+                        {item.cardQuantity}
+                      </Typography>
+                      <IconButton
+                        className="iconButton"
+                        onClick={() => {
+                          console.log(item);
+                          dispatch(addToCart(item));
+                        }}
+                      >
+                        <AddIcon />
+                      </IconButton>
+                    </Box>
 
-                  {/*  */}
-                </TableCell>
-                <TableCell className="tableRowPrice">
-                  Total: ${item.price * item.cardQuantity}
-                </TableCell>
-                <TableCell className="tableRow">
-                  <CloseIcon onClick={() => dispatch(removeFromCart(item))} />
-                </TableCell>
-              </TableRow>
-            ))}
+                    {/*  */}
+                  </TableCell>
+                  <TableCell className="tableRowPrice">
+                    Total: ${item.price * item.cardQuantity}
+                  </TableCell>
+                  <TableCell className="tableRow">
+                    <CloseIcon onClick={() => dispatch(removeFromCart(item))} />
+                  </TableCell>
+                </TableRow>
+              )
+            )}
           </TableBody>
         </Table>
       </TableContainer>

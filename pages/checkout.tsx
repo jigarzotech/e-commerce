@@ -18,10 +18,8 @@ function Checkout() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
   const cartItems = useSelector((state) => state.carts);
-  console.log("hello");
+  console.log(cartItems);
   console.log(cartItems.carts);
-
-  const dispatch = useDispatch();
 
   const {
     register,
@@ -146,22 +144,34 @@ function Checkout() {
               </Typography>
             </Box>
 
-            {cartItems.carts?.map((item, index) => {
-              return (
-                <Box className="orderItems">
-                  <Typography variant="subtitle1" color="black">
-                    {item.title} x {item.cardQuantity}
-                  </Typography>
-                  <Typography
-                    variant="subtitle1"
-                    color={Colors.info}
-                    fontWeight={"bold"}
-                  >
-                    ${item.price * item.cardQuantity}
-                  </Typography>
-                </Box>
-              );
-            })}
+            {cartItems.carts?.map(
+              (
+                item: {
+                  id: number;
+                  img: string;
+                  category: string;
+                  title: string;
+                  price: number;
+                  cardQuantity: number;
+                },
+                index: number
+              ) => {
+                return (
+                  <Box className="orderItems">
+                    <Typography variant="subtitle1" color="black">
+                      {item.title} x {item.cardQuantity}
+                    </Typography>
+                    <Typography
+                      variant="subtitle1"
+                      color={Colors.info}
+                      fontWeight={"bold"}
+                    >
+                      ${item.price * item.cardQuantity}
+                    </Typography>
+                  </Box>
+                );
+              }
+            )}
 
             <Box className="orderItems">
               <Typography variant="subtitle1" fontWeight={"bold"} color="black">

@@ -2,14 +2,16 @@
   width: 100%;
   display: flex;
   flex-direction: row;
-  justify-content: space-around;
+  justify-content: space-between;
   margin: auto;
   text-align: center;
   background: rgb(37, 32, 32);
   color: white;
   align-items: center;
-  // padding: '0px 80px;
   height: 70px;
+  position: fixed;
+  top: 0;
+  z-index: 999;
 
   .headerTitle {
     align-items: center;

@@ -5,24 +5,23 @@ import { itemCategory, itemData } from "./womenBannerData";
 import WomenBannerSlider from "./WomenBannerSlider";
 import { useTheme } from "@mui/material/styles";
 
-interface props {
-  filterData: {
-    img: string;
-    category: string;
-    title: string;
-    price: string;
-  };
-}
+type filterData = {
+  img: string;
+  category: string;
+  title: string;
+  price: number;
+};
 
 function WomenBanner() {
   const theme = useTheme();
   const matches = useMediaQuery(theme.breakpoints.down("md"));
 
   const [activeCategory, setActiveCategory] = useState<string>("");
-  const [filterData, setFilterData] = useState<Array>([]);
+  const [filterData, setFilterData] = useState<filterData[] | []>([]);
+
   function filterDataHandler(name: string) {
     if (activeCategory) {
-      const newData = itemData.filter((item) => item?.category === name);
+      let newData = itemData.filter((item) => item?.category === name);
       setActiveCategory(name);
       setFilterData(newData);
     } else {
@@ -32,7 +31,7 @@ function WomenBanner() {
     }
   }
   useEffect(() => {
-    filterDataHandler();
+    filterDataHandler(activeCategory);
   }, []);
   return (
     <Box className="womenBanner" sx={{ flexDirection: matches && "column" }}>

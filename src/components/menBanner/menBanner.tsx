@@ -9,7 +9,7 @@ type filterDataType = {
   img: string;
   category: string;
   title: string;
-  price: string;
+  price: number;
 };
 function MenBanner() {
   const theme = useTheme();
@@ -17,19 +17,21 @@ function MenBanner() {
 
   const [activeCategory, setActiveCategory] = useState<string>("");
   const [filterData, setFilterData] = useState<filterDataType[] | []>([]);
-  const filterDataHandler = (name: string) => {
+  function filterDataHandler(name: string) {
     if (activeCategory) {
-      const newData = itemData.filter((item) => item?.category === name);
+      let newData = itemDatas.filter((item) => item?.category === name);
       setActiveCategory(name);
       setFilterData(newData);
     } else {
-      const newData = itemDatas.filter((item) => item?.category === "clothings");
+      const newData = itemDatas.filter(
+        (item) => item?.category === "clothings"
+      );
       setActiveCategory("clothings");
       setFilterData(newData);
     }
-  };
+  }
   useEffect(() => {
-    filterDataHandler();
+    filterDataHandler(activeCategory);
   }, []);
   return (
     <Box
